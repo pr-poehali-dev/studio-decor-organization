@@ -15,6 +15,7 @@ const Index = () => {
   });
 
   const [calculatedCost, setCalculatedCost] = useState(0);
+  const [view3D, setView3D] = useState('overview');
 
   const calculateCost = () => {
     const area = parseFloat(calculatorData.area) || 0;
@@ -199,6 +200,134 @@ const Index = () => {
         </div>
       </section>
 
+      {/* 3D Visualization Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-display font-bold mb-4">3D-визуализация проектов</h2>
+            <p className="text-xl text-gray-300">Наглядная презентация ваших будущих интерьеров</p>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="order-2 lg:order-1">
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-2xl font-display font-semibold mb-4 text-primary">
+                    Интерактивная 3D модель
+                  </h3>
+                  <p className="text-gray-300 leading-relaxed mb-4">
+                    Погрузитесь в ваш будущий интерьер с помощью детальной 3D-визуализации. 
+                    Рассмотрите каждый угол, оцените освещение и пространство еще до начала ремонта.
+                  </p>
+                  
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    <Button 
+                      onClick={() => setView3D('overview')}
+                      variant={view3D === 'overview' ? 'default' : 'outline'}
+                      className={`${view3D === 'overview' ? 'bg-primary' : 'border-gray-600 text-gray-300 hover:bg-gray-700'}`}
+                    >
+                      <Icon name="Home" className="mr-2" size={16} />
+                      Обзор
+                    </Button>
+                    <Button 
+                      onClick={() => setView3D('detail')}
+                      variant={view3D === 'detail' ? 'default' : 'outline'}
+                      className={`${view3D === 'detail' ? 'bg-primary' : 'border-gray-600 text-gray-300 hover:bg-gray-700'}`}
+                    >
+                      <Icon name="Maximize" className="mr-2" size={16} />
+                      Детали
+                    </Button>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <Icon name="Eye" className="text-primary" size={20} />
+                      <span>Реалистичное освещение и текстуры</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <Icon name="RotateCcw" className="text-primary" size={20} />
+                      <span>360° обзор всех помещений</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <Icon name="Layers" className="text-primary" size={20} />
+                      <span>Детализация мебели и декора</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="order-1 lg:order-2">
+              <div className="relative">
+                <div className="bg-gradient-to-br from-gray-700 to-gray-800 rounded-2xl p-8 shadow-2xl">
+                  <div className="bg-gray-900 rounded-xl p-6 min-h-[400px] flex items-center justify-center relative overflow-hidden">
+                    {view3D === 'overview' ? (
+                      <div className="relative w-full h-full">
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg animate-pulse"></div>
+                        <div className="relative z-10 text-center">
+                          <div className="w-20 h-20 bg-primary/30 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <Icon name="Home" size={32} className="text-primary" />
+                          </div>
+                          <h4 className="text-xl font-semibold mb-2">Общий вид студии</h4>
+                          <p className="text-gray-400 mb-4">32 м² современного интерьера</p>
+                          <div className="flex justify-center space-x-4">
+                            <div className="w-12 h-12 bg-primary/50 rounded-lg animate-bounce" style={{animationDelay: '0s'}}></div>
+                            <div className="w-12 h-12 bg-secondary/50 rounded-lg animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                            <div className="w-12 h-12 bg-accent/50 rounded-lg animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="relative w-full h-full">
+                        <div className="absolute inset-0 bg-gradient-to-tr from-secondary/20 to-accent/20 rounded-lg"></div>
+                        <div className="relative z-10 text-center">
+                          <div className="w-20 h-20 bg-secondary/30 rounded-full mx-auto mb-4 flex items-center justify-center animate-spin">
+                            <Icon name="Maximize" size={32} className="text-secondary" />
+                          </div>
+                          <h4 className="text-xl font-semibold mb-2">Детальный вид</h4>
+                          <p className="text-gray-400 mb-4">Рабочая зона с мебелью</p>
+                          <div className="grid grid-cols-3 gap-2">
+                            {[...Array(9)].map((_, i) => (
+                              <div 
+                                key={i} 
+                                className="w-8 h-8 bg-gradient-to-br from-secondary/30 to-accent/30 rounded animate-scale-in"
+                                style={{animationDelay: `${i * 0.1}s`}}
+                              ></div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="flex justify-between items-center bg-black/50 rounded-lg p-3 backdrop-blur-sm">
+                        <div className="flex space-x-2">
+                          <Button size="sm" variant="ghost" className="text-white hover:bg-white/20 p-2">
+                            <Icon name="RotateCcw" size={16} />
+                          </Button>
+                          <Button size="sm" variant="ghost" className="text-white hover:bg-white/20 p-2">
+                            <Icon name="ZoomIn" size={16} />
+                          </Button>
+                          <Button size="sm" variant="ghost" className="text-white hover:bg-white/20 p-2">
+                            <Icon name="ZoomOut" size={16} />
+                          </Button>
+                        </div>
+                        <div className="text-xs text-gray-300">
+                          Перетащите для поворота
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary rounded-full animate-ping"></div>
+                <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-secondary rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Portfolio Section */}
       <section id="portfolio" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -217,13 +346,23 @@ const Index = () => {
                     className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute top-4 right-4">
+                    <Button size="sm" className="bg-primary/90 hover:bg-primary">
+                      <Icon name="Eye" className="mr-1" size={14} />
+                      3D
+                    </Button>
+                  </div>
                 </div>
                 <CardContent className="p-6">
                   <div className="flex justify-between items-start mb-2">
                     <h3 className="text-xl font-display font-semibold">{project.title}</h3>
                     <Badge variant="secondary">{project.area}</Badge>
                   </div>
-                  <p className="text-gray-600 capitalize">{project.style}</p>
+                  <p className="text-gray-600 capitalize mb-3">{project.style}</p>
+                  <Button variant="outline" size="sm" className="w-full">
+                    <Icon name="Maximize" className="mr-2" size={14} />
+                    Смотреть в 3D
+                  </Button>
                 </CardContent>
               </Card>
             ))}
