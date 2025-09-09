@@ -27,49 +27,85 @@ const Index = () => {
 
   const services = [
     {
-      icon: 'Palette',
-      title: 'Дизайн-проект',
-      description: 'Полный проект интерьера с 3D визуализацией',
+      icon: 'Home',
+      title: 'Организация студий',
+      description: 'Планировка и зонирование небольших пространств 15-35 м²',
+      price: 'от 6 000 ₽/м²'
+    },
+    {
+      icon: 'Briefcase',
+      title: 'Дизайн малых офисов',
+      description: 'Функциональные решения для офисов до 50 м²',
       price: 'от 8 000 ₽/м²'
     },
     {
-      icon: 'Hammer',
-      title: 'Ремонт под ключ',
-      description: 'Комплексный ремонт по дизайн-проекту',
-      price: 'от 25 000 ₽/м²'
+      icon: 'Package',
+      title: 'Системы хранения',
+      description: 'Встроенные шкафы и мебель-трансформер',
+      price: 'от 12 000 ₽/м²'
     },
     {
-      icon: 'ShoppingBag',
-      title: 'Подбор мебели',
-      description: 'Поиск и закупка мебели и декора',
-      price: 'от 15%'
+      icon: 'Lightbulb',
+      title: 'Световые решения',
+      description: 'Профессиональное освещение для работы и отдыха',
+      price: 'от 3 500 ₽/м²'
     },
     {
-      icon: 'Eye',
-      title: 'Авторский надзор',
-      description: 'Контроль качества выполненных работ',
-      price: 'от 2 000 ₽/выезд'
+      icon: 'Maximize',
+      title: 'Визуальное расширение',
+      description: 'Зеркала, цвет и свет для увеличения пространства',
+      price: 'от 4 000 ₽/м²'
+    },
+    {
+      icon: 'Palette',
+      title: 'Декор и стиль',
+      description: 'Подбор аксессуаров и элементов декора',
+      price: 'от 2 500 ₽/м²'
     }
   ];
 
   const portfolio = [
     {
       image: '/img/7a67cae3-464c-4abf-8cbe-e2402da4dd57.jpg',
-      title: 'Скандинавская студия',
-      area: '32 м²',
-      style: 'минимализм'
+      title: 'Студия дизайнера',
+      area: '24 м²',
+      style: 'минимализм',
+      features: ['Рабочая зона', 'Спальня-трансформер', 'Мини-кухня']
     },
     {
       image: '/img/787ea9d5-476d-4fab-be65-dd57d44e8d3b.jpg',
-      title: 'Креативное пространство',
-      area: '45 м²',
-      style: 'современный'
+      title: 'IT-офис стартапа',
+      area: '48 м²',
+      style: 'современный',
+      features: ['5 рабочих мест', 'Переговорная зона', 'Кухня-бар']
     },
     {
       image: '/img/f05f6f50-709d-4d38-b3e7-dcd92a177f9b.jpg',
-      title: 'Лофт офис',
-      area: '38 м²',
-      style: 'индустриальный'
+      title: 'Творческая мастерская',
+      area: '35 м²',
+      style: 'лофт',
+      features: ['Рабочий стол 4м', 'Система хранения', 'Выставочная зона']
+    },
+    {
+      image: '/img/787ea9d5-476d-4fab-be65-dd57d44e8d3b.jpg',
+      title: 'Офис риелтора',
+      area: '28 м²',
+      style: 'классика',
+      features: ['Клиентская зона', 'Рабочий кабинет', 'Мини-кухня']
+    },
+    {
+      image: '/img/f05f6f50-709d-4d38-b3e7-dcd92a177f9b.jpg',
+      title: 'Студия красоты',
+      area: '42 м²',
+      style: 'современный',
+      features: ['2 рабочих места', 'Зона ожидания', 'Подсобка']
+    },
+    {
+      image: '/img/7a67cae3-464c-4abf-8cbe-e2402da4dd57.jpg',
+      title: 'Домашний офис',
+      area: '18 м²',
+      style: 'скандинавский',
+      features: ['Эргономичное место', 'Библиотека', 'Зона отдыха']
     }
   ];
 
@@ -104,7 +140,7 @@ const Index = () => {
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-2">
               <Icon name="Home" className="text-primary" size={28} />
-              <span className="text-2xl font-display font-bold text-gray-900">Design Bureau</span>
+              <span className="text-2xl font-display font-bold text-gray-900">Studio Space</span>
             </div>
             <nav className="hidden md:flex space-x-8">
               <a href="#services" className="text-gray-700 hover:text-primary transition-colors">Услуги</a>
@@ -146,9 +182,9 @@ const Index = () => {
       <section id="services" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">Наши услуги</h2>
+            <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">Услуги для малых пространств</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Полный спектр услуг для создания идеального рабочего пространства
+              Эффективные решения для студий и офисов до 50 м²
             </p>
           </div>
           
@@ -333,7 +369,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">Портфолио</h2>
-            <p className="text-xl text-gray-600">Наши лучшие проекты интерьеров</p>
+            <p className="text-xl text-gray-600">Готовые проекты студий и небольших офисов</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -359,6 +395,13 @@ const Index = () => {
                     <Badge variant="secondary">{project.area}</Badge>
                   </div>
                   <p className="text-gray-600 capitalize mb-3">{project.style}</p>
+                  <div className="flex flex-wrap gap-1 mb-3">
+                    {project.features?.map((feature, idx) => (
+                      <span key={idx} className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full">
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
                   <Button variant="outline" size="sm" className="w-full">
                     <Icon name="Maximize" className="mr-2" size={14} />
                     Смотреть в 3D
